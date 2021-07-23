@@ -1,14 +1,80 @@
 # flutter_step_container
 
-Step for Form or Introduce and so on
+Stepper for Form or Introduce and so on
 
-## Getting Started
+# Installing
 
-This project is a starting point for a Dart
-[package](https://flutter.dev/developing-packages/),
-a library module containing code that can be shared easily across
-multiple Flutter or Dart projects.
+### 1. Depend on it
 
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.dev/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+Add this to your package's `pubspec.yaml` file:
+
+```yaml
+dependencies:
+  flutter_step_container: ^0.0.1
+```
+
+### 2. Install it
+
+You can install packages from the command line:
+
+with `pub`:
+
+```
+$ pub get
+```
+
+with `Flutter`:
+
+```
+$ flutter pub get
+```
+
+### 3. Import it
+
+Now in your `Dart` code, you can use:
+
+```dart
+import 'package:flutter_step_container/flutter_step_container.dart';
+```
+
+# Usage
+
+`StepContainer` is a _Stateful Widget_ that show steps.
+Include it in your `build` method like:
+
+```dart
+StepContainer(
+        finishCallBack: (val) {
+          print('callback====$val');
+        },
+        finishView: Center(
+          child: ListView(
+            children: List<Widget>.generate(100, (index) => Text('Hi,I\'m Giff $index')),
+            shrinkWrap: true,
+          ),
+        ),
+        models: <StepModel>[
+          StepModel(
+              title: Text('Page one'),
+              content: TextFormField(
+                  decoration: const InputDecoration(
+                    icon: Icon(Icons.person),
+                    hintText: 'What do people call you?',
+                    labelText: 'Name *',
+                  )
+              ),
+          ),
+          StepModel(
+              title: Text('Page two'),
+              content: TextFormField(
+                  decoration: const InputDecoration(
+                    icon: Icon(Icons.sports),
+                    hintText: 'What do people call you before?',
+                    labelText: 'I don\'t know',
+                  )
+              )
+          ),
+        ],
+      )
+```
+
