@@ -1,16 +1,79 @@
-# example
+# flutter_step_container
 
-A new Flutter project.
+Stepper for Form or Introduce and so on
 
-## Getting Started
+# Installing
 
-This project is a starting point for a Flutter application.
+### 1. Depend on it
 
-A few resources to get you started if this is your first Flutter project:
+Add this to your package's `pubspec.yaml` file:
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+```yaml
+dependencies:
+  flutter_step_container: ^0.0.1
+```
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### 2. Install it
+
+You can install packages from the command line:
+
+with `pub`:
+
+```
+$ pub get
+```
+
+with `Flutter`:
+
+```
+$ flutter pub get
+```
+
+### 3. Import it
+
+Now in your `Dart` code, you can use:
+
+```dart
+import 'package:flutter_step_container/flutter_step_container.dart';
+```
+
+# Usage
+
+`StepContainer` is a _Stateful Widget_ that show steps.
+Include it in your `build` method like:
+
+```dart
+StepContainer(
+        finishCallBack: (val) {
+          print('callback====$val');
+        },
+        finishView: Center(
+          child: ListView(
+            children: List<Widget>.generate(100, (index) => Text('Hi,I\'m Giff $index')),
+            shrinkWrap: true,
+          ),
+        ),
+        models: <StepModel>[
+          StepModel(
+              title: Text('Page one'),
+              content: TextFormField(
+                  decoration: const InputDecoration(
+                    icon: Icon(Icons.person),
+                    hintText: 'What do people call you?',
+                    labelText: 'Name *',
+                  )
+              ),
+          ),
+          StepModel(
+              title: Text('Page two'),
+              content: TextFormField(
+                  decoration: const InputDecoration(
+                    icon: Icon(Icons.sports),
+                    hintText: 'What do people call you before?',
+                    labelText: 'I don\'t know',
+                  )
+              )
+          ),
+        ],
+      )
+```
