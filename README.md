@@ -78,3 +78,8 @@ StepContainer(
       )
 ```
 
+
+# Gif
+
+<p align="center"><img src="https://github.com/asionbo/flutter_step_container/blob/main/preview/show.gif?raw=true"/></p>
+
